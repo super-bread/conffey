@@ -16,6 +16,11 @@ from xpinyin import Pinyin
 
 # DONE
 def clock_list():
+    """
+    获取当前时间，返回列表
+    :return: <list[str]> ["年-月-日", "时:分:秒", "AM/PM", "上午x点/下午x点", "星期几",
+                          "此年中的第几天", "此年中的第几周(如果第一周不满7天，第一周不算)"]
+    """
     now = time.strftime
     clk = [now('%Y-%m-%d'), now('%H:%M:%S'), now('%p'), now('%I'), now('%A'), now('%j'), now('%U')]
     return clk
@@ -23,33 +28,60 @@ def clock_list():
 
 # DONE
 def clock_str():
-    now = time.strftime('%Y-%m-%d  %H:%M:%S')
+    """
+    获取当前时间，返回字符串
+    :return: <str> "年-月-日 时:分:秒"
+    """
+    now = time.strftime('%Y-%m-%d %H:%M:%S')
     return now
 
 
 # DONE
 def inv_str(s):
+    """
+    颠倒字符串
+    :param s: 需要颠倒的字符串
+    :return: <str> "颠倒后的字符串"
+    """
     rtn = ''.join(s[::-1])
     return rtn
 
 
 # DONE
 def inv_list(s):
+    """
+    颠倒字符串
+    :param s: 需要颠倒的字符串
+    :return: <str> "颠倒后的字符串"
+    """
     rtn = s[::-1]
     return rtn
 
 
 # DONE
 def inv_num(n):
-    tmp1 = str(n)
-    tmp2 = ''.join(tmp1[::-1])
-    rtn = float(tmp2)
+    """
+    颠倒数字
+    :param n: 需要颠倒的字符串
+    :return: <float/int> 颠倒后的数字
+    """
+    rtn = None
+    if isinstance(n, int):
+        rtn = int(str(n)[::-1])
+    elif isinstance(n, float):
+        rtn = float(str(n)[::-1])
+
     return rtn
 
 
 # DONE
 def load_a(trns, title='请稍等,精彩马上呈现'):
-    i = 0
+    """
+    在控制台上输出loading的文字
+    :param trns: 次数
+    :param title: 前面的文字
+    :return: None
+    """
     sys.stdout.write('\r')
     sys.stdout.flush()
     sys.stdout.write(title)
@@ -75,6 +107,12 @@ def load_a(trns, title='请稍等,精彩马上呈现'):
 
 # DONE
 def load_b(trns, title='请稍等,精彩马上呈现'):
+    """
+    在控制台上输出loading的文字
+    :param trns: 次数
+    :param title: 前面的文字
+    :return: None
+    """
     sys.stdout.write('\r')
     sys.stdout.flush()
 
@@ -104,6 +142,12 @@ def load_b(trns, title='请稍等,精彩马上呈现'):
 
 # DONE
 def get_location_code(words, sep=' '):
+    """
+    获取汉字的区位码
+    :param words: 需要获取区位码的汉字字符串
+    :param sep: 分隔符
+    :return: <str> 区位码
+    """
     tmp = []
 
     for w in words:
@@ -118,7 +162,7 @@ def get_location_code(words, sep=' '):
 # DONE
 def draw_par(speed, angle, miles, par_char='O'):
     """
-    draw_par
+    预测抛物线
     :param speed: 速度
     :param angle: 角度
     :param miles: 英里
@@ -132,15 +176,13 @@ def draw_par(speed, angle, miles, par_char='O'):
 
 
 # DONE
-def check_ver(version=3):
-    __MAJOR, __MINOR, __MICRO = sys.version_info[0], sys.version_info[1], sys.version_info[2]
-    if __MAJOR != version:
-        print('Python版本与本程序不兼容, 当前版本为 %d.%d.%d' % (__MAJOR, __MINOR, __MICRO))
-        exit()
-
-
-# DONE
 def sort_chinese_list(words, reverse=False):
+    """
+    对汉字列表排序（音序法）
+    :param words: 需要排序的汉字列表
+    :param reverse: 正序赋值False，倒序赋值True
+    :return: <list> [排序后的列表]
+    """
     pinyin = Pinyin()
 
     temp = []
@@ -156,6 +198,13 @@ def sort_chinese_list(words, reverse=False):
 
 # DONE
 def sort_chinese_str(words, reverse=False, sep=' '):
+    """
+    对汉字列表排序（音序法）
+    :param words: 需要排序的汉字列表
+    :param reverse: 正序赋值False，倒序赋值True
+    :param sep: 分隔符
+    :return: <str> "排序后的字符串"
+    """
     pinyin = Pinyin()
 
     temp = []
@@ -171,14 +220,29 @@ def sort_chinese_str(words, reverse=False, sep=' '):
 
 
 # DONE
-def get_pinyin(words, sep=' '):
+def get_pinyin(words):
+    """
+    获取汉字字符串每个汉字的拼音
+    :param words: 汉字字符串
+    :return: <dict> ""
+    """
     pinyin = Pinyin()
-    rtn = pinyin.get_pinyin(words, splitter=sep)
+    p = pinyin.get_pinyin(words)
+    p = p.split('-')
+    rtn = dict(zip(words, p))
     return rtn
 
 
 # DONE
 def encryption(string, lib='md5', is_hmac=True, encoding='utf-8'):
+    """
+    加密字符串
+    :param string: 需要加密的字符串
+    :param lib: 加密模式
+    :param is_hmac: 是否使用 hmac
+    :param encoding: 编码方式
+    :return: <str> "加密后的字符串"
+    """
     libs = ['md5', 'sha1', 'sha256', 'sha512']
     if is_hmac:
         if not lib in libs:
@@ -233,6 +297,12 @@ def encryption(string, lib='md5', is_hmac=True, encoding='utf-8'):
 
 
 def limit_line_print(string, clo):
+    """
+    限制每行的输出量
+    :param string: 要输出的字符串
+    :param clo: 输出量
+    :return: None
+    """
     x = 0
     for item in string:
         print(item, end='')

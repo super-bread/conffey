@@ -5,12 +5,11 @@ from conffey.Image import *
 from conffey.Office import *
 
 
-__all__ = ['clock_str', 'clock_list',   # Command.py
+__all__ = ['clock_str', 'clock_list',   # Console.py
            'inv_str', 'inv_num', 'inv_list',
            'get_location_code',
            'load_a', 'load_b',
            'draw_par',
-           'check_ver',
            'encryption',
 
            'create_file',   # File.py

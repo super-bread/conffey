@@ -10,9 +10,17 @@ import os
 from PIL import Image, ImageFilter
 
 
-def conver_type(img_path, new_path, new_name, flag):
+def conver_type(path, new_path, new_name, flag):
+    """
+    转换图片类型
+    :param path: 源图片路径
+    :param new_path: 新图片保存路径 无图片名
+    :param new_name: 新图片名称 无后缀
+    :param flag: 类型
+    :return: None
+    """
     flag_list = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tif']
-    img = Image.open(img_path)
+    img = Image.open(path)
 
     if flag == flag_list[0]:
         img=img.convert('RGB')
@@ -30,13 +38,30 @@ def conver_type(img_path, new_path, new_name, flag):
         img.save(os.path.join(new_path, new_name + '.tif'), 'tiff')
 
 
-def img_resize(path, new_path, h, w):
+def img_resize(path, new_path, new_name, h, w):
+    """
+    重置文件大小（宽，高）
+    :param path: 源图片路径
+    :param new_path: 新图片保存路径 无图片名
+    :param new_name: 新图片名称 含后缀
+    :param h: 高
+    :param w: 宽
+    :return: None
+    """
     img = Image.open(path)
     img.resize((h, w))
-    img.save(new_path)
+    img.save(os.path.join(new_path, new_name))
 
 
 def img_filter(path, new_path, new_name, filter_mode):
+    """
+    图片滤镜
+    :param path: 源图片路径
+    :param new_path: 新图片保存路径 无图片名
+    :param new_name: 新图片名称 无后缀
+    :param filter_mode: 滤镜模式
+    :return: None
+    """
     new_img = None
     img = Image.open(path)
     mode_list = ['CONTOUR', 'BLUR', 'DETAIL', 'EDGE_ENHANCE', 'EMBOSS', 'SMOOTH', 'SHARPEN']
