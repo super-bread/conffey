@@ -1,8 +1,16 @@
-﻿# Twinkles #
+﻿# Conffey #
+
+### 功能
+
+A library that encapsulates various functions of Python.
+
+一个将Python的各种功能封装起来的库
+
+---
 
 ### 版本
 
-***v3 . 100 . 4 - beta***
+***v3 . 100 . 25 - beta***
 
 ---
 

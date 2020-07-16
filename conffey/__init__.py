@@ -1,8 +1,8 @@
 # _*_ coding:utf-8 _*_
-from twinkles.Cmd import *
-from twinkles.File import *
-from twinkles.Img import *
-from twinkles.Office import *
+from conffey.Console import *
+from conffey.File import *
+from conffey.Image import *
+from conffey.Office import *
 
 
 __all__ = ['clock_str', 'clock_list',   # Command.py

@@ -48,11 +48,11 @@ def inv_num(n):
 
 
 # DONE
-def load_a(trns):
+def load_a(trns, title='请稍等,精彩马上呈现'):
     i = 0
     sys.stdout.write('\r')
     sys.stdout.flush()
-    sys.stdout.write('请稍等,精彩马上呈现... ')
+    sys.stdout.write(title)
 
     for foo in range(trns):
         sys.stdout.write('—')
@@ -74,12 +74,12 @@ def load_a(trns):
 
 
 # DONE
-def load_b(trns):
+def load_b(trns, title='请稍等,精彩马上呈现'):
     sys.stdout.write('\r')
     sys.stdout.flush()
 
     for foo in range(trns):
-        sys.stdout.write('请稍等,精彩马上呈现')
+        sys.stdout.write(title)
         sys.stdout.write('.')
 
         time.sleep(0.25)
@@ -127,15 +127,14 @@ def draw_par(speed, angle, miles, par_char='O'):
     """
 
     for x in range(miles + 1):
-        print('%04d' % x,
-              ' ' * math.floor(0.5 + x * math.tan(speed) - x * x / (angle * math.cos(speed))) + par_char,
-              sep='')
+        ws_num = math.floor(0.5 + x * math.tan(speed) - x * x / (angle * math.cos(speed)))
+        print('%04d' % x, ' ' * ws_num + par_char, sep='')
 
 
 # DONE
-def check_ver(ver=3):
+def check_ver(version=3):
     __MAJOR, __MINOR, __MICRO = sys.version_info[0], sys.version_info[1], sys.version_info[2]
-    if __MAJOR != ver:
+    if __MAJOR != version:
         print('Python版本与本程序不兼容, 当前版本为 %d.%d.%d' % (__MAJOR, __MINOR, __MICRO))
         exit()
 
@@ -231,3 +230,12 @@ def encryption(string, lib='md5', is_hmac=True, encoding='utf-8'):
                 sha512 = hashlib.sha512()
                 sha512.update(string.encode(encoding))
                 return sha512.hexdigest()
+
+
+def limit_line_print(string, clo):
+    x = 0
+    for item in string:
+        print(item, end='')
+        x += 1
+        if x == clo:
+            print('\n', end='')

@@ -28,12 +28,18 @@ def delete_file(path, is_all=False):
 # DONE
 def read_file(file_path, size=0, mode='r', coding='utf-8'):
     if size != 0:
-        with open(file_path, mode=mode, encoding=coding) as f:
-            rtn = f.read(size)
+        if os.path.exists(file_path):
+            with open(file_path, mode=mode, encoding=coding) as f:
+                rtn = f.read(size)
+        else:
+            rtn = 0
         return rtn
     else:
-        with open(file_path, mode=mode, encoding=coding) as f:
-            rtn = f.read()
+        if os.path.exists(file_path):
+            with open(file_path, mode=mode, encoding=coding) as f:
+                rtn = f.read()
+        else:
+            rtn = 0
         return rtn
 
 
