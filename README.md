@@ -1,6 +1,6 @@
 ﻿# Conffey #
 
-### 功能
+### 功能  Function
 
 A library that encapsulates various functions of Python.
 
@@ -8,13 +8,13 @@ A library that encapsulates various functions of Python.
 
 ---
 
-### 版本
+### 版本  Version
 
-***v3 . 100 . 25 - beta***
+***v3 . 100 . 100 - Release***
 
 ---
 
-### 兼容系统
+### 兼容系统  Compatible System
 
 - {Windows} :    全部功能兼容
 - {Mac OS} :      全部功能兼容
@@ -23,8 +23,18 @@ A library that encapsulates various functions of Python.
 
 ---
 
-### 重要
+### 重要  Important
 
-> - **下载方式**：下载 ***.zip***文件（**Linux/Mac OS X** 下为 ***.tar.gz*** 或 ***.tgz***），
+> - **下载方式**：
 >
->   并解压到Python安装目录下的 ***Lib \ site-packages***目录下
+> - #### 1.
+>
+>   下载 ***.zip***文件（**Linux/Mac OS X** 下为 ***.tar.gz*** 或 ***.tgz***），
+>   
+>   并将压缩包里的 ***conffey*** 文件夹 解压到
+>   
+>   Python安装目录下的 ***Lib \ site-packages***目录下
+>   
+> - #### 2. (推荐)
+>   打开 **Cmd** （**Linux/Mac OS X** 下为 **Bash**）,
+>   输入命令 ***pip install conffey***
